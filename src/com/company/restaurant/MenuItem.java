@@ -2,14 +2,15 @@ package com.company.restaurant;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 public class MenuItem {
     private String name;
     private Double price;
     private String description;
     private String category;
-    private Date dateAdded = new Date();
-    private boolean isNew;
+    private Date dateAdded;
+    protected boolean isNew;
 
 //I know how to do validation, I'm just being lazy
     public MenuItem(String name, Double price, String description, String category) {
@@ -17,6 +18,7 @@ public class MenuItem {
         this.price = price;
         this.description = description;
         this.category = category;
+        this.dateAdded = new Date();
     }
 
     public String getName() {
@@ -51,11 +53,26 @@ public class MenuItem {
         this.category = category;
     }
 
-    public boolean isNew() {
+    /*public boolean isNew() {
+        Date today = new Date();
+        if (dateAdded.before(today.add()))
         return isNew;
-    }
+    }*/
 
     public void setNew(boolean aNew) {
         Date date = new Date();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MenuItem menuItem = (MenuItem) o;
+        return Objects.equals(name, menuItem.name) && Objects.equals(price, menuItem.price) && Objects.equals(description, menuItem.description) && Objects.equals(category, menuItem.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price, description, category);
     }
 }
