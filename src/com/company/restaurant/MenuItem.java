@@ -24,7 +24,6 @@ public class MenuItem {
     }
 
     public void setName(String name) {
-        if()
         this.name = name;
     }
 
@@ -57,6 +56,6 @@ public class MenuItem {
     }
 
     public void setNew(boolean aNew) {
-        private Date date = new Date();
+        Date date = new Date();
     }
 }
